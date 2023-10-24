@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Traffic(japanese)</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      h1 {
+        padding: 0;
+        margin: 0;
+        font-size: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- MAP[START] -->
+    <h1>Traffic(japanese)</h1>
+    <div id="myMap" style="width: 60%; height: 70%; float: left"></div>
+    <!-- MAP[END] -->
+
+    <script
+      src="https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=Agfd7s3Y-rgzPl-BiIpIqQlQEd_ihTR427sYWt_BzFYkeg9QPCRaPkliIJZt6PXg"
+      async
+      defer
+    ></script>
+    <script src="../js/BmapQuery.js"></script>
+    <script>
+      //****************************************************************************************
+      // BingMaps&BmapQuery
+      //****************************************************************************************
+      //Init
+      function GetMap() {
+        //------------------------------------------------------------------------
+        //1. Instance
+        //------------------------------------------------------------------------
+        const map = new Bmap("#myMap");
+
+        //------------------------------------------------------------------------
+        //2. Display Map
+        //------------------------------------------------------------------------
+        map.startMap(35.650904, 139.712487, "load", 12); //The place is Bellevue.
+
+        //----------------------------------------------------
+        //3. Traffic(日本非対応)
+        //   map.traffic();
+        //----------------------------------------------------
+        map.traffic();
+      }
+    </script>
+  </body>
+</html>

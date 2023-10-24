@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Map:Change view</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      h1 {
+        padding: 0;
+        margin: 0;
+        font-size: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- MAP[START] -->
+    <h1>Map:Change view</h1>
+    <div id="myMap" style="width: 60%; height: 70%; float: left"></div>
+    <!-- MAP[END] -->
+
+    <script
+      src="https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=Agfd7s3Y-rgzPl-BiIpIqQlQEd_ihTR427sYWt_BzFYkeg9QPCRaPkliIJZt6PXg"
+      async
+      defer
+    ></script>
+    <script src="../js/BmapQuery.js"></script>
+    <script>
+      //****************************************************************************************
+      // BingMaps&BmapQuery
+      //****************************************************************************************
+      //Init
+      function GetMap() {
+        //------------------------------------------------------------------------
+        //1. Instance
+        //------------------------------------------------------------------------
+        const map = new Bmap("#myMap");
+
+        //------------------------------------------------------------------------
+        //2. Display Map
+        //   startMap(lat, lon, "MapType", Zoom[1~20]);
+        //   MapType:[load, aerial,canvasDark,canvasLight,birdseye,grayscale,streetside]
+        //--------------------------------------------------
+        map.startMap(47.6149, -122.1941, "load", 10);
+
+        //----------------------------------------------------
+        //3. MapChangeView
+        //   ex1)changeMap(lat, lon, "MapType");
+        //   ex2)changeMap(lat, lon, "MapType", Zoom[1~20]);
+        //   "MapType":[load,aerial,canvasDark,canvasLight,birdseye,grayscale,streetside]
+        //----------------------------------------------------
+        // ex1) after 3 seconds.
+        setTimeout(function () {
+          map.changeMap(47.615, -122.195, "aerial");
+        }, 3000);
+
+        // ex2) after 6 seconds.
+        setTimeout(function () {
+          map.changeMap(47.6153, -122.1951, "canvasDark", 17);
+        }, 6000);
+      }
+    </script>
+  </body>
+</html>

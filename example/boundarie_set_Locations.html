@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SetLocation multiple boundary</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      h1 {
+        padding: 0;
+        margin: 0;
+        font-size: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- MAP[START] -->
+    <h1>SetLocation multiple boundaries</h1>
+    <div id="myMap" style="width: 60%; height: 70%; float: left"></div>
+    <!-- MAP[END] -->
+
+    <script
+      src="https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=Agfd7s3Y-rgzPl-BiIpIqQlQEd_ihTR427sYWt_BzFYkeg9QPCRaPkliIJZt6PXg&setLang=en&setMkt=en-US"
+      async
+      defer
+    ></script>
+    <script src="../js/BmapQuery.js"></script>
+    <script>
+      //****************************************************************************************
+      // BingMaps&BmapQuery
+      //****************************************************************************************
+      //Init
+      function GetMap() {
+        //------------------------------------------------------------------------
+        //1. Instance
+        //------------------------------------------------------------------------
+        const map = new Bmap("#myMap");
+
+        //------------------------------------------------------------------------
+        //2. Display Map
+        //------------------------------------------------------------------------
+        map.startMap(51.523125, -0.115712, "load", 1); //The place is London.
+
+        //----------------------------------------------------
+        //3.SetLocation multiple boundaries
+        //----------------------------------------------------
+        const location = [
+          "Tokyo",
+          "Victoria, Australia",
+          "Western Australia",
+          "Northern Territory",
+          "Queensland",
+          "New South Wales",
+          "Doha",
+          "Dubai",
+          "California",
+          "nevada",
+          "utah",
+          "arizona",
+          "colorado",
+          "dc",
+          "maryland",
+          "new york",
+          "British Columbia",
+          "Beijing",
+          "Montana",
+          "England",
+          "Scotland",
+          "Northern Ireland",
+        ];
+        const zoom = [
+          [1, 5], //'Victoria, Australia'
+          [1, 5], //'Western Australia',
+          [1, 5], //'Northern Territory'
+          //...Not zoom, default:[1,20]
+        ];
+        //map.setLocationBoundary(location[array], Zoom[array], 'AdminDivision1', getAllPoligon[true,false]);
+        map.setLocationBoundary(location, zoom, "AdminDivision1");
+      }
+    </script>
+  </body>
+</html>

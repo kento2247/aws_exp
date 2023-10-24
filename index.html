@@ -1,12 +1,185 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.mapfit.com/v2-4/assets/css/mapfit.css" rel="stylesheet" />
-  <title>AWS_APP</title>
+<meta charset="UTF-8">
+<title>BmapQuery Index</title>
+<style>html,body{height:100%;}body{padding:0;margin:0;}h1{padding:0;margin:0;}</style>
 </head>
 <body>
 
+<div>
+   <h1>BmapQuery Index (BingMaps Library)</h1>
+    <p>Sample files for each function are prepared in the "./example/" folder.</p>
+
+    <div id="map">
+        <h2>Map:Basic</h2>
+        <ul>
+            <li><a href="example/map_start.html" target="_blank">[map] example/map_start.html</a></li>
+            <li><a href="example/map_event.html" target="_blank">[map] example/map_event.html</a></li>
+            <li><a href="example/map_changeView.html" target="_blank">[map] example/map_changeView.html</a></li>
+            <li><a href="example/map_getInfo.html" target="_blank">[map] example/map_getInfo.html</a></li>
+        </ul>
+    </div>
+    <div id="push">
+        <h2>Map:Pushpin</h2>
+        <ul>
+            <li><a href="example/pushpin.html" target="_blank">[pushpin] example/pushpin.html</a></li>
+            <li><a href="example/pushpin_text.html" target="_blank">[pushpin]example/pushpin_text.html</a></li>
+            <li><a href="example/pushpin_icon.html" target="_blank">[pushpin] example/pushpin_icon.html</a></li>
+            <li><a href="example/pushpin_event.html" target="_blank">[pushpin] example/pushpin_event.html</a></li>
+            <li><a href="example/pushpin_delete.html" target="_blank">[pushpin] example/pushpin_delete.html</a></li>
+            <li><a href="example/pushpin_center.html" target="_blank">[pushpin] example/pushpin_center.html</a></li>
+        </ul>
+    </div>
+    <div id="circle">
+        <h2>Map:Geolocation & Circle</h2>
+        <ul>
+            <li><a href="example/geolocation.html" target="_blank">[circle] example/geolocation.html</a></li>
+            <li><a href="example/circle.html" target="_blank">[circle] example/circle.html</a></li>
+            <li><a href="example/circle_event.html" target="_blank">[circle] example/circle_event.html</a></li>
+            <li><a href="example/circleSet.html" target="_blank">[circle] example/circleSet.html</a></li>
+            <li><a href="example/circleSet_event.html" target="_blank">[circle] example/circleSet_event.html</a></li>
+        </ul>
+    </div>
+    <div id="infobox">
+        <h2>Map:Infobox</h2>
+        <ul>
+            <li><a href="example/infobox.html" target="_blank">[infobox] example/infobox.html</a></li>
+            <li><a href="example/infobox_html.html" target="_blank">[infobox] example/infobox_html.html</a></li>
+            <li><a href="example/infobox_iframe.html" target="_blank">[infobox] example/infobox_iframe.html</a></li>
+            <li><a href="example/infobox_event.html" target="_blank">[infobox] example/infobox_event.html</a></li>
+            <li><a href="example/infoboxs_showChange.html" target="_blank">[infobox] example/infoboxs_change.html</a></li>
+        </ul>
+    </div>
+    <div id="layer">
+        <h2>Map:Layer</h2>
+        <ul>
+            <li><a href="example/pushpin_layer.html" target="_blank">[Layer] example/pushpin_layer.html</a></li>
+            <li><a href="example/pushpin_layerOneDelete.html" target="_blank">[Layer]example/pushpin_layerOneDelete.html</a></li>
+            <li><a href="example/pushpin_layerAllDelete.html" target="_blank">[Layer] example/pushpin_layerAllDelete.html</a></li>
+        </ul>
+    </div>
+    <div id="heatMap">
+        <h2>heatMap GeoJson (SampleData:EarthQuakes)</h2>
+        <ul>
+            <li><a href="example/heatmapfromgeojson.html" target="_blank">[Heat Map] example/heatmapfromgeojson.html</a></li>
+        </ul>
+    </div>
+    <div id="polyline">
+        <h2>Map:Polyline</h2>
+        <ul>
+            <li><a href="example/polyline.html" target="_blank">[Polyline] example/polyline.html</a></li>
+            <li><a href="example/polyline_lineType.html" target="_blank">[Polyline]example/polyline_lineType.html</a></li>
+        </ul>
+    </div>
+    <div id="tracking">
+        <h2>Map:Realtime Tracking</h2>
+        <ul>
+            <li><a href="example/tracking.html" target="_blank">[Realtime Tracking] example/tracking.html</a></li>
+            <li><a href="example/trackingLogMonitoring.html" target="_blank">[Realtime Tracking(Log Monitoring sample)] example/trackingLogMonitoring.html</a></li>
+            <li><a href="example/trackingGetValue.html" target="_blank">[Realtime Tracking Draw] example/trackingGetValue.html</a></li>
+        </ul>
+    </div>
+    <div id="geocode">
+        <h2>Map:Geocode</h2>
+        <ul>
+           <li><a href="example/geocode.html" target="_blank">[geocode] example/geocode.html</a></li>
+            <li><a href="example/reverse_geocode.html" target="_blank">[geocode] example/reverse_geocode.html</a></li>
+        </ul>
+    </div>
+    <div id="direction">
+        <h2>Map:Direction</h2>
+        <ul>
+            <li><a href="example/directions_en.html" target="_blank">[direction:en] example/directions_en.html</a></li>
+            <li><a href="example/directions_ja.html" target="_blank">[direction:jp] example/directions_ja.html</a></li>
+        </ul>
+    </div>
+    <div id="autosuggest">
+        <h2>Map:Autosuggest</h2>
+        <ul>
+             <li><a href="example/autosuggest_en.html" target="_blank">[autosuggest:en] example/autosuggest_en.html</a></li>
+            <li><a href="example/autosuggest_ja.html" target="_blank">[autosuggest:jp] example/autosuggest_ja.html</a></li>
+        </ul>
+    </div>
+    <div id="traffic">
+        <h2>Map:Traffic</h2>
+        <ul>
+            <li><a href="example/traffic_en.html" target="_blank">[traffic:en] example/traffic_en.html</a></li>
+<!--            <li><a href="example/traffic_ja.html" target="_blank">[traffic:ja] example/traffic_ja.html</a></li>-->
+        </ul>
+    </div>
+    <div id="boundaris">
+        <h2>Map:Boundary</h2>
+        <ul>
+            <li><a href="example/boundaries_en.html" target="_blank">[Boundary:en] example/boundaries_en.html</a></li>
+            <li><a href="example/boundaries_ja.html" target="_blank">[Boundary:ja] example/boundaries_ja.html</a></li>
+            <li><a href="example/boundaryMultiple_en.html" target="_blank">[Boundary:en] example/boundaryMultiple_en.html</a></li>
+            <li><a href="example/bounds_get_search.html" target="_blank">[Boundary:en] example/bounds_get_search.html</a></li>
+            <li><a href="example/boundarie_set_Locations.html" target="_blank">[Boundary:en] example/boundarie_set_Locations.html</a></li>
+        </ul>
+    </div>
+</div>
+
+
+<div id="myMap" style="width: 100%;height: 50%;"></div>
+<script src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=[***Your My Key***]' async defer></script>
+<script src="js/BmapQuery.js"></script>
+<script>
+//****************************************************************************************
+// BingMaps&BmapQuery
+//****************************************************************************************
+//Init
+function GetMap(){
+    //------------------------------------------------------------------------
+    //Instance
+    //------------------------------------------------------------------------
+    const map = new Bmap("#myMap");
+
+    //------------------------------------------------------------------------
+    //Map:Init
+    //------------------------------------------------------------------------
+    map.startMap(47.6149, -122.1941, "load", 16);
+
+    //------------------------------------------------------------------------
+    //Map:Event
+    //------------------------------------------------------------------------
+    map.onMap("click",function(){
+        alert("MapEvent!");
+    });
+
+    //------------------------------------------------------------------------
+    //Pushpin
+    //------------------------------------------------------------------------
+    const pin1 = map.pin(47.6149, -122.1941, "#ff0000");
+    //------------------------------------------------------------------------
+    //pushpin:Event
+    //------------------------------------------------------------------------
+    map.onPin(pin1, "click", function(){
+        alert("PinEvent1");
+    });
+
+    //------------------------------------------------------------------------
+    //Pushpin:Text
+    //------------------------------------------------------------------------
+    const pin2 = map.pinText(47.6140, -122.1950, "title","subtitle","A");
+
+    //------------------------------------------------------------------------
+    //Pushpin:Icon
+    //------------------------------------------------------------------------
+    const pin3 = map.pinIcon(47.6130, -122.1945, "img/poi_custom.png", 1.0, 0, 0);
+
+    //------------------------------------------------------------------------
+    //Infobox
+    //------------------------------------------------------------------------
+    map.infobox(47.6149, -122.1941, "1 step", "Start");
+
+    //------------------------------------------------------------------------
+    //Infobox:html
+    //------------------------------------------------------------------------
+    const html = '<div style="background:red;">Hello,world</div>';
+    map.infoboxHtml(47.6160, -122.1950, html);
+
+}
+</script>
 </body>
 </html>
