@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/hamburger.css">
+    <link rel="stylesheet" href="./assets/scss/slider.scss">
+    <link rel="stylesheet" href="./assets/css/title.css">
+    <script src="./assets/js/jquery-3.6.1.min.js" defer></script>
+    <script src="./assets/js/slider.js" defer></script>
+    <title>yagami_bakery</title>
+</head>
+<body class="">
+    <header class="fixed w-full bg-white h-20 top-0">
+        <div class="flex ">
+            <figure class="w-1/4 mt-2">
+                <img src="./assets/img/keio.png" alt="" class="">
+            </figure>
+            <div>
+                <h1 class="font-bold text-lg ml-10 mt-4">矢上ベーカリー</h1>
+                <span class=" block ml-8 text-center">
+                    <a href="#">MY PAGE</a>
+                </span>
+            </div>
+        </div>
+        <div class="hamburger-menu">
+            <input type="checkbox" id="menu-btn-check">
+            <label for="menu-btn-check" class="menu-btn"><span></span></label>
+            <div class="menu-content">
+            <ul>
+                <li>
+                    <a href="#">NEWS</a>
+                </li>
+                <li>
+                    <a href="#">MENU</a>
+                </li>
+                <li>
+                    <a href="#">SELECTED</a>
+                </li>
+                <li>
+                    <a href="#">FAQ</a>
+                </li>
+                <li>
+                    <a href="#">ACCESS</a>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- section - hero -->
+        <!-- <section>
+            <div class="relative">
+                <ul class="slideshow-zoom slider-top">
+                    <li>
+                        <img src="./assets/img/hero/bakeryfront.png" alt="img1">
+                    </li>
+                    <li>
+                        <img src="./assets/img/hero/yagamifront.png" alt="img2">
+                    </li>
+                    <li>
+                        <img src="./assets/img/hero/recommend.png" alt="img3">
+                    </li>
+                </ul>
+            </div>
+        </section> -->
+
+        <!-- section - news -->
+        <section class="bg-white radius-xl">
+            <h2 class="mb-2 text-2xl tracking-tight font-extrabold text-gray-900 dark:text-white text-center">NEWS</h2>
+            <div class="grid pt-4 text-left border-t border-gray-200 md:gap-16 dark:border-gray-700 md:grid-cols-2"><div></div>
+            <div class="bg-white w-4/5 radius-xl">
+                <div>
+                    <div class="max-w-sm w-full lg:max-w-full lg:flex ml-12 mt-24">
+                        <div class="border-r border-b border-l border-t border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r pt-2 px-4 flex flex-col justify-center leading-normal radius-xl">
+                        <div class="mb-8">
+                            <p class="text-sm text-gray-600 flex items-center">
+                                2023.10.02
+                            </p>
+                            <p class="text-gray-700 text-base">
+                                早慶戦に勝つ！こだわりの小倉こしあんで作った「慶應あんぱん」が登場！期間限定での販売となりますので、お早めにお試しください！
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- カードのレイアウトを組んでから実際に他のモノを作る -->
+            </div>
+                <!-- <div>
+                    <h2>2023.09.30</h2>
+                    <p>慶應義塾大学の生協組合員証をお持ちの方は、10%割引でご利用いただけます！組合員でない方は、是非この機会にご加入ください！</p>
+                </div>
+                <div>
+                    <h2>2023.09.24</h2>
+                    <p>10月より冬季の営業時間に移行します。平日・週末共に11:00〜16:00となります。ご了承ください。</p>
+                </div>
+                <div>
+                    <h2>2023.07.04</h2>
+                    <p>愛知県・豊橋産の巨峰をふんだんに使用した「巨峰パン」が登場！期間限定での販売となりますので、お早めにお試しください！</p>
+                </div> -->
+            </div>
+        </section>
+
+        <!-- section - menu -->
+        <section>
+            <h2 class="mb-2 text-2xl tracking-tight font-extrabold text-gray-900 dark:text-white text-center">MENU</h2>
+            <div class="grid pt-4 text-left border-t border-gray-200 md:gap-16 dark:border-gray-700 md:grid-cols-2"><div></div>
+            <div>
+                <div class="grid grid-cols-2 gap-2 mx-8">
+                        <div class="max-w-sm lg:max-w-full lg:flex">
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('./assets/img/bread/kabocha.png'); object-fit: cover;" title="Woman holding a mug"></div>
+                            <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                                <div class="mb-8">
+                                    <p class="text-sm text-gray-600 flex items-center">1 かぼちゃパン</p>
+                                    <div class="text-gray-900 font-bold text-xl mb-2">210円</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="max-w-sm lg:max-w-full lg:flex">
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('./assets/img/bread/tuna.png'); object-fit: cover;" title="Woman holding a mug"></div>
+                            <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                                <div class="mb-8">
+                                    <p class="text-sm text-gray-600 flex items-center">2 ツナコーン</p>
+                                    <div class="text-gray-900 font-bold text-xl mb-2">210円</div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 mx-8 mt-4">
+                        <div class="max-w-sm lg:max-w-full lg:flex">
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('./assets/img/bread/grape.png'); object-fit: cover;" title="Woman holding a mug"></div>
+                            <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                                <div class="mb-8">
+                                    <p class="text-sm text-gray-600 flex items-center">3 巨峰のパイ</p>
+                                    <div class="text-gray-900 font-bold text-xl mb-2">160円</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="max-w-sm lg:max-w-full lg:flex">
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('./assets/img/bread/anpan.png'); object-fit: cover;" title="Woman holding a mug"></div>
+                            <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                                <div class="mb-8">
+                                    <p class="text-sm text-gray-600 flex items-center">4 慶應あんぱん</p>
+                                    <div class="text-gray-900 font-bold text-xl mb-2">190円</div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 mx-8 mt-4">
+                        <div class="max-w-sm lg:max-w-full lg:flex">
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('./assets/img/bread/salt.png'); object-fit: cover;" title="Woman holding a mug"></div>
+                            <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                                <div class="mb-8">
+                                    <p class="text-sm text-gray-600 flex items-center">5塩バターパン</p>
+                                    <div class="text-gray-900 font-bold text-xl mb-2">130円</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="max-w-sm lg:max-w-full lg:flex">
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('./assets/img/bread/hunny.png'); object-fit: cover;" title="Woman holding a mug"></div>
+                            <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                                <div class="mb-8">
+                                    <p class="text-sm text-gray-600 flex items-center">6 はちみつバターパン</p>
+                                    <div class="text-gray-900 font-bold text-xl mb-2">130円</div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="grid grid-cols-2 gap-2 mx-8 mt-4">
+                        <div class="max-w-sm lg:max-w-full lg:flex">
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('./assets/img/bread/cheeze.png'); object-fit: cover;" title="Woman holding a mug"></div>
+                            <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                                <div class="mb-8">
+                                    <p class="text-sm text-gray-600 flex items-center">7 ハムチーズパン</p>
+                                    <div class="text-gray-900 font-bold text-xl mb-2">160円</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="max-w-sm lg:max-w-full lg:flex">
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('./assets/img/bread/bagle.png'); object-fit: cover;" title="Woman holding a mug"></div>
+                            <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                                <div class="mb-8">
+                                    <p class="text-sm text-gray-600 flex items-center">8 黒糖ベーグル</p>
+                                    <div class="text-gray-900 font-bold text-xl mb-2">140円</div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 mx-8 mt-4">
+                        <div class="max-w-sm lg:max-w-full lg:flex">
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('./assets/img/bread/france.png'); object-fit: cover;" title="Woman holding a mug"></div>
+                            <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                                <div class="mb-8">
+                                    <p class="text-sm text-gray-600 flex items-center">9 チーズのフランスパン</p>
+                                    <div class="text-gray-900 font-bold text-xl mb-2">180円</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="max-w-sm lg:max-w-full lg:flex">
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('./assets/img/bread/hamegg.png'); object-fit: cover;" title="Woman holding a mug"></div>
+                            <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                                <div class="mb-8">
+                                    <p class="text-sm text-gray-600 flex items-center">10 ハムタマゴパン</p>
+                                    <div class="text-gray-900 font-bold text-xl mb-2">200円</div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <!-- パンの画像を10個分複製 -->
+            </div>
+        </section>
+
+        <!-- SELECTED -->
+        <section>
+            <h2 class="mb-2 text-2xl tracking-tight font-extrabold text-gray-900 dark:text-white text-center">SELECTED</h2>
+            <div class="grid pt-4 text-left border-t border-gray-200 md:gap-16 dark:border-gray-700 md:grid-cols-2"><div></div>
+            <div class="grid grid-cols-5 gap-4 mx-4 shadow-xl p-4 rounded-lg">
+                <div class="col-span-3">
+                    <img src="./assets/img/select1.jpg" alt="">
+                </div>
+                <div class="col-span-2">
+                    <p class="text-xs">
+                        サクサクのパン生地に塩とバターの絶妙なコンビネーション。深い味わいの極上の逸品。
+                    </p>
+                </div>
+            </div>
+            <div class="grid grid-cols-5 gap-4 mx-4 shadow-xl p-4 rounded-lg">
+                <div class="col-span-3">
+                    <img src="./assets/img/select2.jpg" alt="">
+                </div>
+                <div class="col-span-2">
+                    <p class="text-xs">
+                        伝統の慶應レシピを受け継ぐあんぱん。滑らかな餡ともちもちの生地が絶妙なハーモニーを奏でる。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="bg-white dark:bg-gray-900">
+            <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+                <h2 class="mb-2 text-2xl tracking-tight font-extrabold text-gray-900 dark:text-white text-center">F&Q</h2>
+                <div class="grid pt-4 text-left border-t border-gray-200 md:gap-16 dark:border-gray-700 md:grid-cols-2"><div>
+            <div class="mb-10">
+                <h3 class="flex items-center mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                    <svg class="flex-shrink-0 mr-2 w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>
+                    慶応大学の学生以外でも利用できますか？
+                </h3>
+                <p class="text-gray-500 dark:text-gray-400">もちろんです。矢上ベーカリーは、慶應義塾以外の方でもご利用いただけます。</p>
+            </div>
+            </div>
+            </div>
+            <div class="mb-10">
+                <h3 class="flex items-center mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                    <svg class="flex-shrink-0 mr-2 w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>
+                    どんな支払方法ができますか？
+                </h3>
+                <p class="text-gray-500 dark:text-gray-400">QRコード決済、現金、クレジットカード、iD、交通系ICなどでお支払いいただけます。。</p>
+            </div>
+            </div>
+            </div>
+            <div class="mb-10">
+                <h3 class="flex items-center mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                    <svg class="flex-shrink-0 mr-2 w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>
+                    卵や乳製品のアレルギーがあるのですが、食べられるパンはありますか？
+                </h3>
+                <p class="text-gray-500 dark:text-gray-400">当店には、一部ですが卵や乳製品のアレルギーをお持ちの方でも召し上がっていただけるようなパンがございます。店頭にて含まれるアレルギー成分を表示しておりますので、ご確認ください。</p>
+            </div>
+            </div>
+            </div>
+            <div class="mb-10">
+                <h3 class="flex items-center mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                    <svg class="flex-shrink-0 mr-2 w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>
+                    MYPAGEではどんなことができるんですか？
+                </h3>
+                <p class="text-gray-500 dark:text-gray-400">MYPAGEでは、QRコードを利用して決済をしていただけます。また、ポイントを貯めていただくことができ、MYPAGE内で現在の保有ポイントをご確認いただけます。保有ポイントは、1ポイントを1円とし、お支払いに利用していただくことができます。</p>
+            </div>
+            </div>
+            </div>
+            </div>
+        </section>
+
+        <!-- INFORMATION -->
+        <section>
+            <h2 class="mb-2 text-2xl tracking-tight font-extrabold text-gray-900 dark:text-white text-center">INFORMATION</h2>
+            <div class="grid pt-4 text-left border-t border-gray-200 md:gap-16 dark:border-gray-700 md:grid-cols-2"><div></div>
+            <figure>
+                <img src="./assets/img/location.png" alt="">
+            </figure>
+        </section>
+
+    </main>
+
+</body>
+</html>
