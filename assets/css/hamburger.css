@@ -9,6 +9,7 @@
     align-items: center;
     z-index: 90;
     background-color: #3584bb;
+    border-radius: 50%;
 }
 .menu-btn span,
 .menu-btn span:before,
