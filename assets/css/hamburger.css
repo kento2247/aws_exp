@@ -88,5 +88,6 @@
 
 .slider-top{
   position: relative;
+  z-index: -1;
   top:80px;
 }
