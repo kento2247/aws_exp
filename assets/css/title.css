@@ -1,0 +1,28 @@
+.header-title {
+  position: relative;
+  color: black;
+  top:100px;
+  width: 70%;
+  background: #d0ecff;
+  line-height: 1.4;
+  padding: 0.25em 0.5em;
+  margin: 0 auto;
+  border-radius: 0 5px 5px 5px;
+}
+
+.header-title:after {
+  /*タブ*/
+  position: absolute;
+  font-family: "Font Awesome 5 Free",'Quicksand','Avenir','Arial',sans-serif;
+  font-weight: 900;
+  content: 'Check';
+  background: #2196F3;
+  color: #fff;
+  left: 0px;
+  bottom: 100%;
+  border-radius: 5px 5px 0 0;
+  padding: 3px 7px 1px;
+  font-size: 0.7em;
+  line-height: 1;
+  letter-spacing: 0.05em
+}
