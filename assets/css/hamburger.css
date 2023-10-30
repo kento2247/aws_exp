@@ -85,3 +85,8 @@
 #menu-btn-check:checked ~ .menu-content {
     left: 0;/*メニューを画面内へ*/
 }
+
+.slider-top{
+  position: relative;
+  top:80px;
+}
