@@ -2,15 +2,36 @@
 <head>
     <title>QR cord reaer</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.js"></script>
 </head>
-<body>
+<span id="input">
     <div id="wrapper">
         <video id="video" autoplay muted playsinline></video>
         <canvas id="camera-canvas"></canvas>
         <canvas id="rect-canvas"></canvas>
         <span id="qr-msg">QR code is not found</span>
     </div>
-    <script src="./jsQR.js"></script>
-    <script src="./script.js"></script>
+    <div id="wrapper">
+        <video id="video" autoplay muted playsinline></video>
+        <canvas id="camera-canvas"></canvas>
+        <canvas id="rect-canvas"></canvas>
+        <span id="qr-msg">QR code is not found</span>
+    </div>
+</span>
+
+<spam>
+    <div class="qrblock">
+        <p class="qrcomment">QRコードで生成したい文字列を入力してください。</p>
+        <input id="isbn" type="text" name="isbn" value=""> <button id="getqrInfo"
+            class="btn btn-default">QRコードを生成</button>
+    </div>
+    <div id="qrOutput">
+        <canvas id="qr"></canvas>
+        <div><img id="newImg"></div>
+    </div>
+</spam>
+
+<script src="./jsQR.js"></script>
+<script src="./script.js"></script>
 </body>
 </html>
