@@ -6,12 +6,13 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/hamburger.css">
     <link rel="stylesheet" href="./assets/scss/slider.scss">
+    <link rel="stylesheet" href="./assets/css/title.css">
     <script src="./assets/js/jquery-3.6.1.min.js" defer></script>
     <script src="./assets/js/slider.js" defer></script>
     <title>yagami_bakery</title>
 </head>
-<body class="bg-yellow-100">
-    <header class="fixed w-full bg-white h-20">
+<body class="">
+    <header class="fixed w-full bg-white h-20 top-0">
         <div class="flex ">
             <figure class="w-1/4 mt-2">
                 <img src="./assets/img/keio.png" alt="" class="">
@@ -50,31 +51,85 @@
 
     <main>
         <!-- section - hero -->
-        <section>
-            <ul class="slideshow-zoom slider-top">
-                <li>
-                    <img src="http://lab.risewill.co.jp/images/web-design/action-sample-img1.jpg" alt="img1">
-                </li>
-                <li>
-                    <img src="http://lab.risewill.co.jp/images/web-design/action-sample-img2.jpg" alt="img2">
-                </li>
-                <li>
-                    <img src="http://lab.risewill.co.jp/images/web-design/action-sample-img3.jpg" alt="img3">
-                </li>
-                <li>
-                    <img src="http://lab.risewill.co.jp/images/web-design/action-sample-img4.jpg" alt="img4">
-                </li>
-            </ul>
-        </section>
+        <!-- <section>
+            <div class="relative">
+                <ul class="slideshow-zoom slider-top">
+                    <li>
+                        <img src="http://lab.risewill.co.jp/images/web-design/action-sample-img1.jpg" alt="img1">
+                    </li>
+                    <li>
+                        <img src="http://lab.risewill.co.jp/images/web-design/action-sample-img2.jpg" alt="img2">
+                    </li>
+                    <li>
+                        <img src="http://lab.risewill.co.jp/images/web-design/action-sample-img3.jpg" alt="img3">
+                    </li>
+                    <li>
+                        <img src="http://lab.risewill.co.jp/images/web-design/action-sample-img4.jpg" alt="img4">
+                    </li>
+                </ul>
+            </div>
+        </section> -->
 
         <!-- section - news -->
-        <section>
-            
+        <section class="bg-white radius-xl">
+            <h1 class="">NEWS</h1>
+            <div class="bg-white w-4/5 radius-xl">
+                <div>
+                    <div class="max-w-sm w-full lg:max-w-full lg:flex ml-12 mt-24">
+                        <div class="border-r border-b border-l border-t border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r pt-2 px-4 flex flex-col justify-center leading-normal radius-xl">
+                        <div class="mb-8">
+                            <p class="text-sm text-gray-600 flex items-center">
+                                2023.10.02
+                            </p>
+                            <p class="text-gray-700 text-base">
+                                早慶戦に勝つ！こだわりの小倉こしあんで作った「慶應あんぱん」が登場！期間限定での販売となりますので、お早めにお試しください！
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- カードのレイアウトを組んでから実際に他のモノを作る -->
+            </div>
+                <!-- <div>
+                    <h2>2023.09.30</h2>
+                    <p>慶應義塾大学の生協組合員証をお持ちの方は、10%割引でご利用いただけます！組合員でない方は、是非この機会にご加入ください！</p>
+                </div>
+                <div>
+                    <h2>2023.09.24</h2>
+                    <p>10月より冬季の営業時間に移行します。平日・週末共に11:00〜16:00となります。ご了承ください。</p>
+                </div>
+                <div>
+                    <h2>2023.07.04</h2>
+                    <p>愛知県・豊橋産の巨峰をふんだんに使用した「巨峰パン」が登場！期間限定での販売となりますので、お早めにお試しください！</p>
+                </div> -->
+            </div>
         </section>
 
         <!-- section - menu -->
         <section>
+            <h1>MENU</h1>
+            <div>
+                <!-- パンの画像を10個分複製 -->
+                <div class="max-w-sm w-full lg:max-w-full lg:flex">
+                    <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('../img/a1.JPG')" title="Woman holding a mug">
+                    </div>
+                <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                <div class="mb-8">
+                    <p class="text-sm text-gray-600 flex items-center">
+                    <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
+                </svg>
+                Members only
+                </p>
+                <div class="text-gray-900 font-bold text-xl mb-2">Can coffee make you a better developer?</div>
+                </div>
+            </div>
+        </section>
 
+        <!-- INFORMATION -->
+        <section>
+            <figure>
+                <img src="./assets/img/location.png" alt="">
+            </figure>
         </section>
 
     </main>
