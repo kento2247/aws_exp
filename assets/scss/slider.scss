@@ -1,0 +1,30 @@
+.slideshow-zoom {
+  overflow: hidden;
+  width: 280px;
+  height: 180px;
+  padding: 0;
+
+  li {
+    list-style: none;
+    width: 100%;
+    height: 100%;
+    animation: zooming 5s forwards;
+
+    img {
+      width: 100%;
+    }
+
+    @keyframes zooming {
+      0% {
+        z-index: 1;
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1.2);
+        opacity: 1;
+        z-index: 10;
+      }
+    }
+  }
+}

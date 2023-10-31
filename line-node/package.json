@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@line/bot-sdk": "^8.0.1",
+    "aws-sdk": "^2.1484.0"
+  }
+}
