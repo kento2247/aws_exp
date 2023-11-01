@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <title>QR cord reaer</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/qr.css')}}">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.js"></script>
@@ -24,7 +24,7 @@
         <h1 class="text-center font-bold text-4xl mt-8">ユーザーQRコード</h1>
     </div>
     <figure class="">
-        <img src="./qr_code.png" alt="">
+        <img src="{{url_for('static', filename='img/qr_code.png')}}" alt="">
     </figure>
     <div id="qrOutput">
         <canvas id="qr"></canvas>

@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="{{url_for('static', filename='css/hamburger.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/hamburger.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/title.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='scss/slider.scss')}}">
     <script src="{{url_for('static', filename='js/jquery-3.6.1.min.js')}}"></script>
-    <script src="{{url_for('static', filename='js/slider.js')}}"></script> -->
+    <script src="{{url_for('static', filename='js/slider.js')}}"></script>
     <title>yagami_bakery</title>
 </head>
 <body class="">
     <header class="fixed w-full bg-white h-20 top-0">
         <div class="flex ">
             <figure class="w-1/4 mt-2">
-                <img src="./assets/img/keio.png" alt="" class="">
+                <img src="{{url_for('static', filename='img/keio.png')}}" alt="" class="">
             </figure>
             <div>
                 <h1 class="font-bold text-lg ml-10 mt-4">矢上ベーカリー</h1>
@@ -55,13 +55,13 @@
             <div class="relative">
                 <ul class="slideshow-zoom slider-top">
                     <li>
-                        <img src="./assets/img/hero/bakeryfront.png" alt="img1">
+                        <img src=""{{url_for('static', filename='')}}"img/hero/bakeryfront.png" alt="img1">
                     </li>
                     <li>
-                        <img src="./assets/img/hero/yagamifront.png" alt="img2">
+                        <img src=""{{url_for('static', filename='')}}"img/hero/yagamifront.png" alt="img2">
                     </li>
                     <li>
-                        <img src="./assets/img/hero/recommend.png" alt="img3">
+                        <img src=""{{url_for('static', filename='')}}"img/hero/recommend.png" alt="img3">
                     </li>
                 </ul>
             </div>
@@ -109,7 +109,7 @@
             <div>
                 <div class="grid grid-cols-2 gap-2 mx-8">
                         <div class="max-w-sm lg:max-w-full lg:flex">
-                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('./assets/img/bread/kabocha.png'); object-fit: cover;" title="Woman holding a mug"></div>
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('{{url_for('static', filename='img/bread/kabocha.png')}}"); object-fit: cover; title="Woman holding a mug"></div>
                             <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                                 <div class="mb-8">
                                     <p class="text-sm text-gray-600 flex items-center">1 かぼちゃパン</p>
@@ -119,7 +119,7 @@
                         </div>
 
                         <div class="max-w-sm lg:max-w-full lg:flex">
-                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('./assets/img/bread/tuna.png'); object-fit: cover;" title="Woman holding a mug"></div>
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('{{url_for('static', filename='img/bread/tuna.png')}}"); object-fit: cover; title="Woman holding a mug"></div>
                             <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                                 <div class="mb-8">
                                     <p class="text-sm text-gray-600 flex items-center">2 ツナコーン</p>
@@ -131,7 +131,7 @@
 
                 <div class="grid grid-cols-2 gap-2 mx-8 mt-4">
                         <div class="max-w-sm lg:max-w-full lg:flex">
-                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('./assets/img/bread/grape.png'); object-fit: cover;" title="Woman holding a mug"></div>
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('{{url_for('static', filename='img/bread/grape.png')}}"); object-fit: cover; title="Woman holding a mug"></div>
                             <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                                 <div class="mb-8">
                                     <p class="text-sm text-gray-600 flex items-center">3 巨峰のパイ</p>
@@ -141,7 +141,7 @@
                         </div>
 
                         <div class="max-w-sm lg:max-w-full lg:flex">
-                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('./assets/img/bread/anpan.png'); object-fit: cover;" title="Woman holding a mug"></div>
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('{{url_for('static', filename='img/bread/anpan.png')}}"); object-fit: cover; title="Woman holding a mug"></div>
                             <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                                 <div class="mb-8">
                                     <p class="text-sm text-gray-600 flex items-center">4 慶應あんぱん</p>
@@ -153,7 +153,7 @@
 
                 <div class="grid grid-cols-2 gap-2 mx-8 mt-4">
                         <div class="max-w-sm lg:max-w-full lg:flex">
-                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('./assets/img/bread/salt.png'); object-fit: cover;" title="Woman holding a mug"></div>
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('{{url_for('static', filename='img/bread/salt.png')}}"); object-fit: cover; title="Woman holding a mug"></div>
                             <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                                 <div class="mb-8">
                                     <p class="text-sm text-gray-600 flex items-center">5塩バターパン</p>
@@ -163,7 +163,7 @@
                         </div>
 
                         <div class="max-w-sm lg:max-w-full lg:flex">
-                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('./assets/img/bread/hunny.png'); object-fit: cover;" title="Woman holding a mug"></div>
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('{{url_for('static', filename='img/bread/hunny.png')}}"); object-fit: cover; title="Woman holding a mug"></div>
                             <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                                 <div class="mb-8">
                                     <p class="text-sm text-gray-600 flex items-center">6 はちみつバターパン</p>
@@ -174,7 +174,7 @@
                 </div>
                 <div class="grid grid-cols-2 gap-2 mx-8 mt-4">
                         <div class="max-w-sm lg:max-w-full lg:flex">
-                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('./assets/img/bread/cheeze.png'); object-fit: cover;" title="Woman holding a mug"></div>
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('{{url_for('static', filename='img/bread/cheeze.png')}}"); object-fit: cover; title="Woman holding a mug"></div>
                             <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                                 <div class="mb-8">
                                     <p class="text-sm text-gray-600 flex items-center">7 ハムチーズパン</p>
@@ -184,7 +184,7 @@
                         </div>
 
                         <div class="max-w-sm lg:max-w-full lg:flex">
-                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('./assets/img/bread/bagle.png'); object-fit: cover;" title="Woman holding a mug"></div>
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('{{url_for('static', filename='img/bread/bagle.png')}}"); object-fit: cover; title="Woman holding a mug"></div>
                             <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                                 <div class="mb-8">
                                     <p class="text-sm text-gray-600 flex items-center">8 黒糖ベーグル</p>
@@ -196,7 +196,7 @@
 
                 <div class="grid grid-cols-2 gap-2 mx-8 mt-4">
                         <div class="max-w-sm lg:max-w-full lg:flex">
-                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('./assets/img/bread/france.png'); object-fit: cover;" title="Woman holding a mug"></div>
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('{{url_for('static', filename='img/bread/france.png')}}"); object-fit: cover; title="Woman holding a mug"></div>
                             <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                                 <div class="mb-8">
                                     <p class="text-sm text-gray-600 flex items-center">9 チーズのフランスパン</p>
@@ -206,7 +206,7 @@
                         </div>
 
                         <div class="max-w-sm lg:max-w-full lg:flex">
-                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('./assets/img/bread/hamegg.png'); object-fit: cover;" title="Woman holding a mug"></div>
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('{{url_for('static', filename='img/bread/hamegg.png')}}"); object-fit: cover;" title="Woman holding a mug"></div>
                             <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                                 <div class="mb-8">
                                     <p class="text-sm text-gray-600 flex items-center">10 ハムタマゴパン</p>
@@ -225,7 +225,7 @@
             <div class="grid pt-4 text-left border-t border-gray-200 md:gap-16 dark:border-gray-700 md:grid-cols-2"><div></div>
             <div class="grid grid-cols-5 gap-4 mx-4 shadow-xl p-4 rounded-lg">
                 <div class="col-span-3">
-                    <img src="./assets/img/select1.jpg" alt="">
+                    <img src="{{url_for('static', filename='img/select1.jpg')}}" alt="">
                 </div>
                 <div class="col-span-2">
                     <p class="text-xs">
@@ -235,7 +235,7 @@
             </div>
             <div class="grid grid-cols-5 gap-4 mx-4 shadow-xl p-4 rounded-lg">
                 <div class="col-span-3">
-                    <img src="./assets/img/select2.jpg" alt="">
+                    <img src="{{url_for('static', filename='img/select2.jpg')}}" alt="">
                 </div>
                 <div class="col-span-2">
                     <p class="text-xs">
@@ -294,7 +294,7 @@
             <h2 class="mb-2 text-2xl tracking-tight font-extrabold text-gray-900 dark:text-white text-center">INFORMATION</h2>
             <div class="grid pt-4 text-left border-t border-gray-200 md:gap-16 dark:border-gray-700 md:grid-cols-2"><div></div>
             <figure>
-                <img src="./assets/img/location.png" alt="">
+                <img src="{{url_for('static', filename='img/location.png')}}" alt="">
             </figure>
         </section>
 

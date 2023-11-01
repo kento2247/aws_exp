@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <head>
     <title>QR cord reaer</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/qr.css')}}">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.js" defer></script>
-    <script src="{{url_for('static', filename='js/jsQR.js')}}" defer></script>
-    <script src="{{url_for('static', filename='js/script.js')}}" defer></script>
 </head>
 <span id="input">
     <div id="wrapper">
@@ -36,11 +34,15 @@
         <p class="flex items-center font-normal text-gray-500 dark:text-gray-500 text-2xl">
             <p class="text-2xl tracking-wider">
                 <i class="fas fa-thumbs-up"></i>
-                残高 <span>3000</span>円
+                残高<span>3000</span>円
+                <!-- 金額は動的に変更予定 -->
             </p>
         </p>
     </div>
 </div>
+
+<script src="{{url_for('static', filename='js/qr/jsQR.js')}}" ></script>
+<script src="{{url_for('static', filename='js/qr/script.js')}}" ></script>
 
 </body>
 </html>
