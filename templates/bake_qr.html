@@ -4,7 +4,9 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.js" defer></script>
+    <script src="{{url_for('static', filename='js/jsQR.js')}}" defer></script>
+    <script src="{{url_for('static', filename='js/script.js')}}" defer></script>
 </head>
 <span id="input">
     <div id="wrapper">
@@ -40,7 +42,5 @@
     </div>
 </div>
 
-<script src="./jsQR.js"></script>
-<script src="./script.js"></script>
 </body>
 </html>
