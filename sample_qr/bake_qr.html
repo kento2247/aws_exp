@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+    <title>QR cord reaer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.js"></script>
+</head>
+<span id="input">
+    <div id="wrapper">
+        <video id="video" autoplay muted playsinline></video>
+        <canvas id="camera-canvas" class="text-center"></canvas>
+        <canvas id="rect-canvas"></canvas>
+    </div>
+</span>
+
+<span>
+    <div class="qrblock">
+        <p class="qrcomment">QRコードで生成したい文字列を入力してください。</p>
+        <input id="isbn" type="text" name="isbn" value=""> <button id="getqrInfo"
+            class="btn btn-default">QRコードを生成</button>
+    </div>
+    <div>
+        <h1 class="text-center font-bold text-4xl mt-8">矢上ベーカリー<br>QRコードリーダー</h1>
+    </div>
+    <div id="qrOutput">
+        <canvas id="qr"></canvas>
+        <div><img id="newImg"></div>
+    </div>
+</span>
+
+<div id="bottom-banner" tabindex="-1" class="fixed bottom-1/2 flex justify-center left-1/4 w-1/2 p-4 border-t border-gray-200 bg-gray-100 text-3xl">
+    <div class="flex items-center mx-auto">
+        <p class="flex items-center font-normal text-gray-500 dark:text-gray-500 text-2xl">
+            <p class="text-2xl tracking-wider">
+                <i class="fas fa-thumbs-up"></i>
+                残高 <span>3000</span>円
+            </p>
+        </p>
+    </div>
+</div>
+
+<script src="./jsQR.js"></script>
+<script src="./script.js"></script>
+</body>
+</html>
