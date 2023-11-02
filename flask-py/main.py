@@ -12,7 +12,6 @@ app.config['SECRET_KEY'] = '1234'
 #     app.permanent_session_lifetime = timedelta(minutes=15)
 #     session.modified = True
 
-
 @app.route('/')
 def index():
     return render_template('index.html')
