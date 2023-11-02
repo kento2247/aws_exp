@@ -1,0 +1,236 @@
+{
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "",
+    "size": "full",
+    "aspectRatio": "1:1",
+    "aspectMode": "cover",
+    "action": {
+      "type": "uri",
+      "uri": "http://linecorp.com/"
+    }
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "Yagami bakery",
+        "weight": "bold",
+        "size": "xl"
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "margin": "md",
+        "contents": [
+          {
+            "type": "text",
+            "text": "Point: ",
+            "size": "md",
+            "margin": "none"
+          },
+          {
+            "type": "text",
+            "text": "10000",
+            "size": "md",
+            "margin": "md",
+            "flex": 0,
+            "color": "#999999"
+          },
+          {
+            "type": "text",
+            "text": "Points",
+            "size": "sm",
+            "color": "#999999",
+            "margin": "md",
+            "flex": 0
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "margin": "md",
+        "contents": [
+          {
+            "type": "text",
+            "text": "Bonus: "
+          },
+          {
+            "type": "icon",
+            "size": "sm",
+            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+          },
+          {
+            "type": "icon",
+            "size": "sm",
+            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+          },
+          {
+            "type": "icon",
+            "size": "sm",
+            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+          },
+          {
+            "type": "icon",
+            "size": "sm",
+            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+          },
+          {
+            "type": "icon",
+            "size": "sm",
+            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gray_star_28.png"
+          },
+          {
+            "type": "text",
+            "text": "4/5",
+            "size": "sm",
+            "color": "#999999",
+            "margin": "md",
+            "flex": 0
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "margin": "md",
+        "contents": [
+          {
+            "type": "text",
+            "text": "ID: ",
+            "size": "md",
+            "margin": "none"
+          },
+          {
+            "type": "text",
+            "text": "",
+            "size": "xxs",
+            "margin": "md",
+            "flex": 0,
+            "color": "#999999"
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "margin": "lg",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "separator"
+          },
+          {
+            "type": "text",
+            "text": "Last use: ",
+            "color": "#aaaaaa",
+            "size": "sm"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "2023/10/31 10:00",
+                "margin": "none",
+                "size": "sm",
+                "align": "end"
+              },
+              {
+                "type": "text",
+                "text": "+100",
+                "margin": "none",
+                "size": "sm",
+                "align": "end"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "2023/10/31 10:00",
+                "margin": "none",
+                "size": "sm",
+                "align": "end"
+              },
+              {
+                "type": "text",
+                "text": "+100",
+                "margin": "none",
+                "size": "sm",
+                "align": "end"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "2023/10/31 10:00",
+                "margin": "none",
+                "size": "sm",
+                "align": "end"
+              },
+              {
+                "type": "text",
+                "text": "+100",
+                "margin": "none",
+                "size": "sm",
+                "align": "end"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "separator"
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "button",
+            "style": "secondary",
+            "height": "sm",
+            "action": {
+              "type": "uri",
+              "label": "WEBSITE",
+              "uri": "https://linecorp.com"
+            },
+            "margin": "md"
+          },
+          {
+            "type": "button",
+            "style": "primary",
+            "height": "sm",
+            "action": {
+              "type": "postback",
+              "label": "UPDATE",
+              "data": "update_pointcard"
+            },
+            "margin": "md"
+          }
+        ]
+      }
+    ],
+    "flex": 0
+  }
+}
