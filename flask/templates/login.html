@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="container">
+    <div class="notification is-primary">
+        <h1 class="title is-3">ログイン</h1>
+    </div>
+    <!-- エラーをflashを使わずに表示する方法の一つ -->
+    <!-- html内ではNoneは小文字 -->
+    {%if error != none %}
+    <div class="notification is-danger is-light">
+        {{ error }}
+    </div>
+    {%endif%}
+
+    <!-- ログインフォーム -->
+    <form class="box" method="POST">
+        <div class="field">
+            <label class="label">ユーザー名</label>
+            <div class="control">
+                <input class="input" type="text" name="username" placeholder="e.g. alex@example.com">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">パスワード</label>
+            <div class="control">
+                <input class="input" type="password" name="password" placeholder="********">
+            </div>
+        </div>
+
+        <div class="has-text-centered">
+            <button class="button is-primary">ログイン</button>
+            <a class="button is-success is-light" href="{{url_for('signup')}}">サインアップ</a>
+            <a class="button " href="{{url_for('logout')}}">キャンセル</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

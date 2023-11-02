@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<!-- flashメッセージを表示させる -->
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div id="announce" class="notification is-primary">
+    <button class="delete"></button>
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+{% endwith %}
+
+<section class="hero is-fullheight">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title">
+                追尾ゲーム
+            </h1> <!-- ゲームタイトルを追加 -->
+            <h2 class="subtitle">青い<i class="fa fa-bug" aria-hidden="true"></i>から逃げろ！！</h2> <!-- ゲームの説明を追加 -->
+            <div style="display: flex; justify-content: center; align-items: center; margin: 20px;">
+                <canvas id="gameCanvas" width="800" height="600" style="border: 2px solid black;"></canvas>
+            </div>
+            <div id="leaderboard"></div>
+            <script type="text/javascript" src="static/js/script.js"></script>
+        </div>
+    </div>
+</section>
+
+
+
+<script>
+    $("#announce").delay(2000).slideUp();
+</script>
+{% endblock %}
