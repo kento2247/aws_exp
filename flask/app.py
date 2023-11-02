@@ -136,7 +136,7 @@ def home():  # 最初URLでアクセスされた時の処理
         db_insert("USERS", data_obj)  # データベースにadminユーザーを登録する
 
     if "user_id" not in session:  # セッションにuser_idがない場合、未ログインなのでusernameを渡さずにHTMLをレンダリング
-        return render_template("home.html")
+        return render_template("index.html")
     else:  # セッションにuser_idがある場合、ログイン済みなのでusernameを渡してHTMLをレンダリング
         user_name_in_session = session["user_id"]
         result = db_get_json(
@@ -144,9 +144,9 @@ def home():  # 最初URLでアクセスされた時の処理
         )  # sessionにいるユーザーが本当に登録されているか確認する
         if result == []:  # sessionにいるユーザーが登録されていない場合、セッションを削除して未ログイン状態にする
             session.pop("user_id", None)  # セッションからuser_idを削除する
-            return render_template("home.html")
+            return render_template("index.html")
         else:  # sessionにいるユーザーが登録されている場合、ホーム画面を返す
-            return render_template("home.html", username=session["user_id"])
+            return render_template("index.html", username=session["user_id"])
 
 
 @app.route(
