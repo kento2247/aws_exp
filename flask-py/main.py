@@ -4,6 +4,7 @@ from datetime import timedelta
 app = Flask(__name__ , static_folder='./static')
 app.config['SECRET_KEY'] = '1234'
 
+
 # @app.before_request
 # def before_request():
 #     # リクエストのたびにセッションの寿命を更新する
