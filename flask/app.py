@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, g, redirect, url_for, session, flash
-from datetime import timedelta
 
 app = Flask(__name__ , static_folder='./static')
 app.config['SECRET_KEY'] = '1234'
