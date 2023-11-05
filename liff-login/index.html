@@ -21,11 +21,43 @@
                 if (service_id) {
                     let url = 'https://sample-html-resource.s3.amazonaws.com/liff-login.html'
                     url += `?line_id=${userId}&username=${username}&profile_image_url=${pictureUrl}&service_id=${service_id}`
-                    window.open(url);
+                    window.location.replace(url);
                 }
                 else {
-                    alert('service_id is required')
-                    return
+                    const postData = {
+                        "tablename": "lineId_to_serviceInfo",
+                        "method": "query",
+                        "query": [
+                            {
+                                "key": "line_id",
+                                "value": userId
+                            }
+                        ]
+                    }
+                    // POST request
+                    const result = await fetch('https://mqa60zu459.execute-api.us-east-1.amazonaws.com/sample', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        json: true,
+                        body: JSON.stringify(postData),
+                    });
+                    const resultJson = await result.json();
+                    const data = JSON.parse(resultJson.body)
+                    if (data.length == 0) {
+                        // console.log('no service_id found')
+                        alert('no service_id found')
+                        console.log('line_id: ', userId)
+                        //resist new service_id
+                    }
+                    else {
+                        console.log("data: ", data)
+                        const service_id = data[0].service_id
+                        let url = 'https://sample-html-resource.s3.amazonaws.com/liff-login.html'
+                        url += `?line_id=${userId}&username=${username}&profile_image_url=${pictureUrl}&service_id=${service_id}`
+                        window.location.replace(url);
+                    }
                 }
             } else {
                 liff.login()
