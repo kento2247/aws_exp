@@ -2,14 +2,17 @@
   "type": "bubble",
   "hero": {
     "type": "image",
-    "url": "",
-    "size": "full",
-    "aspectRatio": "1:1",
-    "aspectMode": "cover",
+    "url": "https://contents.blog.jicoman.info/image/aws.png",
+    "size": "4xl",
+    "aspectMode": "fit",
     "action": {
-      "type": "uri",
-      "uri": "http://linecorp.com/"
-    }
+      "type": "datetimepicker",
+      "label": "action",
+      "data": "hello",
+      "mode": "date"
+    },
+    "margin": "xxl",
+    "aspectRatio": "1:1"
   },
   "body": {
     "type": "box",
@@ -107,7 +110,7 @@
           },
           {
             "type": "text",
-            "text": "",
+            "text": "1234567890",
             "size": "xxs",
             "margin": "md",
             "flex": 0,
@@ -126,7 +129,7 @@
           },
           {
             "type": "text",
-            "text": "Last use: ",
+            "text": "History: ",
             "color": "#aaaaaa",
             "size": "sm"
           },
@@ -136,7 +139,7 @@
             "contents": [
               {
                 "type": "text",
-                "text": "2023/10/31 10:00",
+                "text": "2023/10/31",
                 "margin": "none",
                 "size": "sm",
                 "align": "end"
@@ -156,7 +159,7 @@
             "contents": [
               {
                 "type": "text",
-                "text": "2023/10/31 10:00",
+                "text": "2023/10/31",
                 "margin": "none",
                 "size": "sm",
                 "align": "end"
@@ -176,7 +179,7 @@
             "contents": [
               {
                 "type": "text",
-                "text": "2023/10/31 10:00",
+                "text": "2023/10/31",
                 "margin": "none",
                 "size": "sm",
                 "align": "end"

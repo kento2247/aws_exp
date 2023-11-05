@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account linked successfully</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .countdown-container {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        .countdown-bar {
+            width: 300px;
+            height: 30px;
+            border: 1px solid #ccc;
+            position: relative;
+            margin: 0 auto;
+            background-color: #f0f0f0;
+        }
+
+        .countdown-progress {
+            height: 100%;
+            width: 0;
+            background-color: #4caf50;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .login-field {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .login-label,
+        .login-value {
+            flex: 1;
+        }
+
+        .login-label {
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        .login-value {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Account linked successfully</h1>
+    <h2>close this window</h2>
+    <div class="fade-in">
+        <div class="login-field" style="display: flex; justify-content: center; margin-bottom: 10px;">
+            <img id="profile-image" src="https://jetstream.bz/wp-content/uploads/2021/03/LINE.jpg" alt="プロフィール画像"
+                style="border-radius: 50%; max-width: 30%; max-height: 30%;">
+        </div>
+        <div class="login-info">
+            <div class="login-field">
+                <div class="login-label">USER NAME:</div>
+                <div class="login-value" id="username">John Doe</div>
+            </div>
+            <div class="login-field">
+                <div class="login-label">LINE ID:</div>
+                <div class="login-value" id="line-id">123456789</div>
+            </div>
+            <div class="login-field">
+                <div class="login-label">SERVICE ID:</div>
+                <div class="login-value" id="service-id">123456789</div>
+            </div>
+        </div>
+        <div class="countdown-container">
+            <div class="countdown-bar">
+                <div class="countdown-progress" id="countdown-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // URLからパラメータを読み取り、DOMを更新
+        const usernameParam = getParameterByName('username');
+        const line_idParam = getParameterByName('line_id');
+        const service_idParam = getParameterByName('service_id');
+        const profileImageUrlParam = getParameterByName('profile_image_url');
+
+        if (usernameParam) {
+            document.getElementById('username').innerText = usernameParam;
+        }
+        if (line_idParam) {
+            document.getElementById('line-id').innerText = line_idParam;
+        }
+        if (service_idParam) {
+            document.getElementById('service-id').innerText = service_idParam;
+        }
+        if (profileImageUrlParam) {
+            document.getElementById('profile-image').src = profileImageUrlParam;
+        }
+
+        let countMax = 200;
+        let countdownValue = countMax;
+        const progressElement = document.getElementById('countdown-progress');
+        const countdownTimeElement = document.getElementById('countdown-time');
+
+        const interval = setInterval(function () {
+            countdownValue--;
+            const progressWidth = (1 - (countMax - countdownValue) / countMax) * 100;
+            progressElement.style.width = `${progressWidth}%`;
+            if (countdownValue <= 0) {
+                clearInterval(interval);
+                window.close();
+            }
+        }, 10);
+    </script>
+</body>
+</html>

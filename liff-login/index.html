@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>LIFF AUTH</title>
+</head>
+<body>
+    <h1>Authenticating...</h1>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <script>
+        async function main() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const service_id = urlParams.get('service_id');
+            await liff.init({ liffId: "2001459172-KopGbo3y", withLoginOnExternalBrowser: true })
+            if (liff.isLoggedIn()) {
+                const profile = await liff.getProfile()
+                const username = profile.displayName
+                const userId = profile.userId
+                const pictureUrl = profile.pictureUrl
+
+                if (service_id) {
+                    let url = 'https://sample-html-resource.s3.amazonaws.com/liff-login.html'
+                    url += `?line_id=${userId}&username=${username}&profile_image_url=${pictureUrl}&service_id=${service_id}`
+                    window.open(url);
+                }
+                else {
+                    alert('service_id is required')
+                    return
+                }
+            } else {
+                liff.login()
+            }
+        }
+        main()
+    </script>
+</body>
+</html>
