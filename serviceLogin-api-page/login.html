@@ -16,13 +16,14 @@
                         <div class="field">
                             <label class="label">Email</label>
                             <div class="control">
-                                <input class="input" type="email" id="email" name="email" required autocomplete="email">
+                                <input class="input" type="email" id="email" name="email" autocomplete="email" required>
                             </div>
                         </div>
                         <div class="field">
                             <label class="label">Password</label>
                             <div class="control">
-                                <input class="input" type="password" id="password" name="password" required>
+                                <input class="input" type="password" id="password" name="password"
+                                    autocomplete="current-password" required>
                             </div>
                         </div>
                         <div class="field">
@@ -36,6 +37,10 @@
             </div>
         </div>
     </section>
+    <div class="has-text-centered">
+        <p>Don't have an account? <span id="toggleSignup" class="has-text-link">Sign Up</span></p>
+    </div>
+    <script src="signin.js"></script>
 
     <script src="login.js"></script>
 </body>

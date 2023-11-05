@@ -1,3 +1,4 @@
+// login.js
 const service_login_api =
   "https://5sbpzbfrgl.execute-api.us-east-1.amazonaws.com/api";
 let redirect_url = new URLSearchParams(window.location.search).get(
@@ -38,3 +39,7 @@ document
       })
       .catch((error) => console.error("Error:", error));
   });
+
+document.getElementById("toggleSignup").addEventListener("click", function () {
+  window.location.href = "signup.html" + window.location.search;
+});
