@@ -5,6 +5,24 @@ const qr = require("qrcode");
 const client = new line.Client({ channelAccessToken: process.env.ACCESSTOKEN });
 const s3 = new AWS.S3();
 const expiresTime = 3600;
+const POINTCARD_TEMPLATE_PATH = "./flex-pointcard-template.json";
+let pointcard_info = {
+  image: {
+    url: "https://contents.blog.jicoman.info/image/aws.png",
+    aspectRatio: "1:1",
+    size: "4xl",
+  },
+  store_name: "Yagami bakery",
+  point: "0",
+  bounus: 0,
+  bounus_max: 5,
+  user_id: "123456789",
+  history: [
+    { date: "2020/10/01", point: "1000" },
+    { date: "2020/10/02", point: "-100" },
+    { date: "2020/10/03", point: "200" },
+  ],
+};
 
 exports.handler = async (event, context, callback) => {
   console.log(event);
@@ -30,11 +48,29 @@ async function linebot(event) {
   if (type == "postback") {
     const postback_data = data.postback.data;
     const postback_params = data.postback.params;
+    const source = data.source;
+    const source_type = source.type;
+    const source_userId = source.userId;
     console.log(postback_data, postback_params);
-    let replyEventObj = {
-      type: "text",
-      text: `params: ${postback_params}\ndata: ${postback_data}`,
-    };
+    let replyEventObj = {};
+    switch (postback_data) {
+      case "update_pointcard":
+        const url = "https://sample.com";
+        const qrcode_url = await make_qrcode_s3url(
+          "point-qr" + source_userId,
+          url
+        );
+        pointcard_info.image.url = qrcode_url;
+        pointcard_info.user_id = source_userId;
+        replyEventObj = await make_pointcard_replyEventObj(pointcard_info);
+        break;
+      default:
+        replyEventObj = {
+          type: "text",
+          text: `params: ${postback_params}\ndata: ${postback_data}`,
+        };
+        break;
+    }
     await client.replyMessage(replyToken, replyEventObj);
   } else {
     const message = data.message;
@@ -54,12 +90,14 @@ async function linebot(event) {
 
     switch (message_type) {
       case "image":
-        let template = require("./flex-pointcard-template.json");
         const image_url = await getS3ObjectUrl_fromLine(
           message_id,
           message_type
         );
-        replyEventObj = make_pointcard_replyEventObj(image_url, source_userId);
+        pointcard_info.image.url = image_url;
+        pointcard_info.image.size = "full";
+        pointcard_info.user_id = source_userId;
+        replyEventObj = await make_pointcard_replyEventObj(pointcard_info);
         break;
       case "audio":
         const s3ObjectUrl = await getS3ObjectUrl_fromLine(
@@ -71,10 +109,9 @@ async function linebot(event) {
       case "text":
         if (message_text.includes("https://")) {
           const qrcode_url = await make_qrcode_s3url(message_id, message_text);
-          replyEventObj = await make_pointcard_replyEventObj(
-            qrcode_url,
-            source_userId
-          );
+          pointcard_info.image.url = qrcode_url;
+          pointcard_info.user_id = source_userId;
+          replyEventObj = await make_pointcard_replyEventObj(pointcard_info);
         } else {
           replyEventObj.text = message_text;
         }
@@ -127,10 +164,76 @@ async function put_s3_obj(params) {
   return publicUrl;
 }
 
-async function make_pointcard_replyEventObj(url, user_id) {
-  let template = require("./flex-pointcard-template.json");
-  template.hero.url = url;
-  template.body.contents[3].contents[1].text = user_id;
+async function make_pointcard_replyEventObj(pointcard_info) {
+  let template = require(POINTCARD_TEMPLATE_PATH);
+  template.hero.url = pointcard_info.image.url;
+  template.hero.size = pointcard_info.image.size;
+  template.hero.aspectRatio = pointcard_info.image.aspectRatio;
+
+  template.body.contents[0].text = pointcard_info.store_name;
+  template.body.contents[1].contents[1].text = pointcard_info.point;
+  const bounus_text = {
+    type: "text",
+    text: "Bonus: ",
+  };
+  const gold_star_icon = {
+    type: "icon",
+    size: "sm",
+    url: "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
+  };
+  const gray_star_icon = {
+    type: "icon",
+    size: "sm",
+    url: "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gray_star_28.png",
+  };
+  const scale_text = {
+    type: "text",
+    text: `${pointcard_info.bounus}/${pointcard_info.bounus_max}`,
+    size: "sm",
+    color: "#999999",
+    margin: "md",
+    flex: 0,
+  };
+  const bounus_contents = [bounus_text];
+  for (let i = 0; i < pointcard_info.bounus_max; i++) {
+    if (i < pointcard_info.bounus) {
+      bounus_contents.push(gold_star_icon);
+    } else {
+      bounus_contents.push(gray_star_icon);
+    }
+  }
+  bounus_contents.push(scale_text);
+  template.body.contents[2].contents = bounus_contents;
+  template.body.contents[3].contents[1].text = pointcard_info.user_id;
+  let history_contents = [
+    template.body.contents[4].contents[0],
+    template.body.contents[4].contents[1],
+  ];
+  for (let i = 0; i < pointcard_info.history.length; i++) {
+    const history = pointcard_info.history[i];
+    const history_content = {
+      type: "box",
+      layout: "baseline",
+      contents: [
+        {
+          type: "text",
+          text: history.date,
+          margin: "none",
+          size: "sm",
+          align: "end",
+        },
+        {
+          type: "text",
+          text: history.point > 0 ? `+${history.point}` : history.point,
+          margin: "none",
+          size: "sm",
+          align: "end",
+        },
+      ],
+    };
+    history_contents.push(history_content);
+  }
+  template.body.contents[4].contents = history_contents;
   const replyEventObj = {
     type: "flex",
     altText: "This is a Flex Message",
