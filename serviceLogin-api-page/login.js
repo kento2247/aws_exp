@@ -41,5 +41,5 @@ document
   });
 
 document.getElementById("toggleSignup").addEventListener("click", function () {
-  window.location.href = "signup.html";
+  window.location.href = "signup.html" + window.location.search;
 });
