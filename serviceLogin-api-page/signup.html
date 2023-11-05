@@ -1,0 +1,55 @@
+<!-- signup.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>service api signup page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <h1 class="title has-text-centered">API Service Signup</h1>
+                    <form id="signupForm">
+                        <div class="field">
+                            <label class="label">Email</label>
+                            <div class="control">
+                                <input class="input" type="email" id="email" name="email" autocomplete="email" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Password</label>
+                            <div class="control">
+                                <input class="input" type="password" id="password" name="password"
+                                    autocomplete="new-password" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Confirm Password</label>
+                            <div class="control">
+                                <input class="input" type="password" id="confirmPassword" name="confirmPassword"
+                                    autocomplete="on" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control has-text-centered">
+                                <button class="button is-primary">Signup</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="flashMessage" class="has-text-danger has-text-centered"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="has-text-centered">
+        <p>Already have an account? <span id="toggleSignin" class="has-text-link">Log In</span></p>
+    </div>
+
+    <script src="signup.js"></script>
+</body>
+</html>
