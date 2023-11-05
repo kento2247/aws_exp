@@ -8,10 +8,15 @@
     <h1>Authenticating...</h1>
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script>
+        const service_login_api = "https://sample-html-resource.s3.amazonaws.com/login.html"
+        const login_api_redirect_url = "https://liff.line.me/2001459172-KopGbo3y"
+        const dynamo_serviceLogin_api = "https://mqa60zu459.execute-api.us-east-1.amazonaws.com/dynamoLogin"
+        const logined_url = 'https://sample-html-resource.s3.amazonaws.com/liff-login.html'
         async function main() {
             const urlParams = new URLSearchParams(window.location.search);
-            const service_id = urlParams.get('service_id');
+            let service_id = urlParams.get('service_id');
             await liff.init({ liffId: "2001459172-KopGbo3y", withLoginOnExternalBrowser: true })
+
             if (liff.isLoggedIn()) {
                 const profile = await liff.getProfile()
                 const username = profile.displayName
@@ -19,8 +24,29 @@
                 const pictureUrl = profile.pictureUrl
 
                 if (service_id) {
-                    let url = 'https://sample-html-resource.s3.amazonaws.com/liff-login.html'
-                    url += `?line_id=${userId}&username=${username}&profile_image_url=${pictureUrl}&service_id=${service_id}`
+                    const postData = {
+                        "tablename": "lineId_to_serviceInfo",
+                        "method": "put",
+                        "item":
+                        {
+                            "line_id": userId,
+                            "service_id": service_id,
+                            "updated_at": new Date().toISOString()
+                        }
+                    }
+                    // POST request
+                    const result = await fetch(dynamo_serviceLogin_api, {
+                        // fetch(dynamo_serviceLogin_api, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        json: true,
+                        body: JSON.stringify(postData),
+                    });
+                    // const resultJson = await result.json();
+                    // console.log("data: ", resultJson)
+                    let url = logined_url + `?line_id=${userId}&username=${username}&profile_image_url=${pictureUrl}&service_id=${service_id}`
                     window.location.replace(url);
                 }
                 else {
@@ -35,7 +61,7 @@
                         ]
                     }
                     // POST request
-                    const result = await fetch('https://mqa60zu459.execute-api.us-east-1.amazonaws.com/sample', {
+                    const result = await fetch(dynamo_serviceLogin_api, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -46,17 +72,13 @@
                     const resultJson = await result.json();
                     const data = JSON.parse(resultJson.body)
                     if (data.length == 0) {
-                        // console.log('no service_id found')
-                        alert('no service_id found')
-                        console.log('line_id: ', userId)
-                        //resist new service_id
+                        window.location.replace(service_login_api + `?redirect_url=${login_api_redirect_url}`);
                     }
                     else {
                         console.log("data: ", data)
-                        const service_id = data[0].service_id
-                        let url = 'https://sample-html-resource.s3.amazonaws.com/liff-login.html'
-                        url += `?line_id=${userId}&username=${username}&profile_image_url=${pictureUrl}&service_id=${service_id}`
-                        window.location.replace(url);
+                        service_id = data[0].service_id
+                        target_url = logined_url + `?line_id=${userId}&username=${username}&profile_image_url=${pictureUrl}&service_id=${service_id}`
+                        window.location.replace(target_url);
                     }
                 }
             } else {
