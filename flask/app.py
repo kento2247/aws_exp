@@ -24,6 +24,10 @@ def user_qr():
 def bake_qr():
     return render_template('bake_qr.html')
 
+@app.route('/confirm')
+def confirm():
+    return render_template('confirm.html')
+
 if __name__ == '__main__':
     app.run(host = '0.0.0.0', port = 5000)
     app.debug = True

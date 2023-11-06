@@ -14,7 +14,7 @@ header {
   left: 0;
   justify-content: space-between;
   align-items: center;
-  background-color: #ccc;
+  background-color: #aaa;
   padding: 0.5rem;
 }
 
@@ -117,12 +117,14 @@ header .cart .cart_icon img {
   display: flex;
   justify-content: space-around;
   margin: 0.5rem 0;
+  
 }
 
 .item_wrapper .item_list .item .item_btnarea .item_cart_btn {
   padding: 4px 1.2rem;
   font-size: 1.2rem;
-  color: #fff;
+  color: black;
+  font-weight: bold;
   background-color: #F0E68C;
   border: none;
   border-radius: 20px;
@@ -149,7 +151,8 @@ header .cart .cart_icon img {
   padding: 4px 1.2rem;
   font-size: 1.2rem;
   line-height: 1.5;
-  color: #fff;
+  color: black;
+  font-weight: bold;
   text-align: center;
   background-color: #F0E68C;
   border: none;
