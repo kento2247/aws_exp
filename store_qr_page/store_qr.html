@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Point and QR Code Page</title>
+    <link rel="stylesheet" href="store_qr.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+</head>
+
+<body>
+    <section class="section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <h1 class="title has-text-centered">Point and QR Code Page</h1>
+                    <form id="pointForm">
+                        <div class="field">
+                            <label class="label">Point</label>
+                            <div class="control">
+                                <input class="input" type="number" id="point" name="point" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">QR Code URL</label>
+                            <div class="control">
+                                <input class="input" type="text" id="qr_url" name="qr_url" readonly>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Location</label>
+                            <div class="control">
+                                <input class="input" type="text" id="location" name="location" readonly>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control has-text-centered">
+                                <button class="button is-primary" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="has-text-centered" id="qrScanner">
+                        <video id="preview" style="width: 100%;"></video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <script src="store_qr.js"></script>
+</body>
+
+</html>

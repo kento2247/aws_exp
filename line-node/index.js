@@ -2,27 +2,14 @@
 const line = require("@line/bot-sdk");
 const AWS = require("aws-sdk");
 const qr = require("qrcode");
+
 const client = new line.Client({ channelAccessToken: process.env.ACCESSTOKEN });
 const s3 = new AWS.S3();
 const expiresTime = 3600;
 const POINTCARD_TEMPLATE_PATH = "./flex-pointcard-template.json";
-let pointcard_info = {
-  image: {
-    url: "https://contents.blog.jicoman.info/image/aws.png",
-    aspectRatio: "1:1",
-    size: "4xl",
-  },
-  store_name: "Yagami bakery",
-  point: "0",
-  bounus: 0,
-  bounus_max: 5,
-  user_id: "123456789",
-  history: [
-    { date: "2020/10/01", point: "1000" },
-    { date: "2020/10/02", point: "-100" },
-    { date: "2020/10/03", point: "200" },
-  ],
-};
+const LIFF_AUTH_URL = "https://liff.line.me/2001459172-KopGbo3y";
+const LINE_ID_AUTH_API_ENDPOINT =
+  "https://mqa60zu459.execute-api.us-east-1.amazonaws.com/dynamoLogin";
 
 exports.handler = async (event, context, callback) => {
   console.log(event);
@@ -45,6 +32,8 @@ async function linebot(event) {
   const type = data.type;
   const replyToken = data.replyToken;
 
+  let replyEventObj = {};
+
   if (type == "postback") {
     const postback_data = data.postback.data;
     const postback_params = data.postback.params;
@@ -52,17 +41,9 @@ async function linebot(event) {
     const source_type = source.type;
     const source_userId = source.userId;
     console.log(postback_data, postback_params);
-    let replyEventObj = {};
     switch (postback_data) {
       case "update_pointcard":
-        const url = "https://sample.com";
-        const qrcode_url = await make_qrcode_s3url(
-          "point-qr" + source_userId,
-          url
-        );
-        pointcard_info.image.url = qrcode_url;
-        pointcard_info.user_id = source_userId;
-        replyEventObj = await make_pointcard_replyEventObj(pointcard_info);
+        replyEventObj = await get_pointcard_info_obj(source_userId);
         break;
       default:
         replyEventObj = {
@@ -82,7 +63,9 @@ async function linebot(event) {
     const source_userId = source.userId;
     const timestamp = data.timestamp;
     const mode = data.mode;
-    let replyEventObj = {
+
+    replyEventObj = {
+      //default reply
       type: "text",
       id: message_id,
       text: `tmp`,
@@ -94,30 +77,29 @@ async function linebot(event) {
           message_id,
           message_type
         );
-        pointcard_info.image.url = image_url;
-        pointcard_info.image.size = "full";
-        pointcard_info.user_id = source_userId;
-        replyEventObj = await make_pointcard_replyEventObj(pointcard_info);
+        replyEventObj.text = `Received image file: ${image_url}`;
         break;
       case "audio":
         const s3ObjectUrl = await getS3ObjectUrl_fromLine(
           message_id,
           message_type
         );
-        replyEventObj.text = `${s3ObjectUrl}`;
+        replyEventObj.text = `Received audio file: ${s3ObjectUrl}`;
         break;
       case "text":
-        if (message_text.includes("https://")) {
-          const qrcode_url = await make_qrcode_s3url(message_id, message_text);
-          pointcard_info.image.url = qrcode_url;
-          pointcard_info.user_id = source_userId;
-          replyEventObj = await make_pointcard_replyEventObj(pointcard_info);
+        const is_logined = await check_login(source_userId);
+        if (!is_logined) {
+          replyEventObj.text = `You are not logined.\nPlease continue to complete the linkage between your service account and your LINE account at the URL below.\n\n${LIFF_AUTH_URL}`;
         } else {
-          replyEventObj.text = message_text;
+          if (message_text === "pointcard") {
+            replyEventObj = await get_pointcard_info_obj(source_userId);
+          } else {
+            replyEventObj.text = `\"${message_text}\" is not supported.`;
+          }
         }
         break;
       default:
-        replyEventObj.text = `File uploaded error. ${message_type}`;
+        replyEventObj.text = `This message type is unsupported: ${message_type}`;
         break;
     }
     await client.replyMessage(replyToken, replyEventObj);
@@ -265,4 +247,70 @@ async function getStreamBuffer(stream) {
     });
     stream.on("error", reject);
   });
+}
+
+async function get_pointcard_info_obj(line_user_id) {
+  let pointcard_info = {
+    image: {
+      url: "https://contents.blog.jicoman.info/image/aws.png",
+      aspectRatio: "1:1",
+      size: "4xl",
+    },
+    store_name: "Yagami bakery",
+    point: "0",
+    bounus: 0,
+    bounus_max: 5,
+    user_id: "123456789",
+    history: [
+      { date: "2020/10/01", point: "1000" },
+      { date: "2020/10/02", point: "-100" },
+      { date: "2020/10/03", point: "200" },
+    ],
+  };
+  //{} => not resistered
+  //{"pointcard_info":{}} => resistered
+  //fetch to lambda and get pointcard_info
+  const qrcode_url = "https://sample.com";
+  const qrcode_img_url = await make_qrcode_s3url(line_user_id, qrcode_url);
+  pointcard_info.image.url = qrcode_img_url;
+  pointcard_info.user_id = line_user_id;
+  const replyEventObj = await make_pointcard_replyEventObj(pointcard_info);
+  return replyEventObj;
+}
+
+async function check_login(line_user_id) {
+  //check login
+  //if login => return true
+  //else => return false
+  const data = {
+    tablename: "lineId_to_serviceInfo",
+    method: "query",
+    query: [
+      {
+        key: "line_id",
+        value: line_user_id,
+      },
+    ],
+  };
+
+  try {
+    const response = await fetch(LINE_ID_AUTH_API_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+    const result_body = JSON.parse(result.body);
+    if (result_body.length == 0) {
+      return false;
+    } else {
+      return true;
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    return false;
+  }
 }

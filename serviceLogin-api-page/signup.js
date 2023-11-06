@@ -1,4 +1,3 @@
-// signup.js
 const service_signup_api =
   "https://x8euwieht0.execute-api.us-east-1.amazonaws.com/signup";
 
@@ -6,6 +5,9 @@ document
   .getElementById("signupForm")
   .addEventListener("submit", function (event) {
     event.preventDefault();
+
+    // ボタンを無効化
+    document.getElementById("signupButton").disabled = true;
 
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
@@ -41,8 +43,8 @@ document
           document.getElementById("flashMessage").style.display = "block";
 
           setTimeout(function () {
-            window.location.href = "login.html";
-          }, 5000);
+            window.location.href = "login.html" + window.location.search;
+          }, 2000);
         } else {
           document
             .getElementById("flashMessage")
@@ -53,7 +55,11 @@ document
           document.getElementById("flashMessage").style.display = "block";
         }
       })
-      .catch((error) => console.error("Error:", error));
+      .catch((error) => console.error("Error:", error))
+      .finally(() => {
+        // ボタンを有効化
+        document.getElementById("signupButton").disabled = false;
+      });
   });
 
 document.getElementById("toggleSignin").addEventListener("click", function () {
