@@ -10,6 +10,8 @@ const POINTCARD_TEMPLATE_PATH = "./flex-pointcard-template.json";
 const LIFF_AUTH_URL = "https://liff.line.me/2001459172-KopGbo3y";
 const LINE_ID_AUTH_API_ENDPOINT =
   "https://mqa60zu459.execute-api.us-east-1.amazonaws.com/dynamoLogin";
+const POINTCARD_INFO_ENDPOINT =
+  "https://ux3v87sf1e.execute-api.us-east-1.amazonaws.com/get_point_info";
 
 exports.handler = async (event, context, callback) => {
   console.log(event);
@@ -40,10 +42,18 @@ async function linebot(event) {
     const source = data.source;
     const source_type = source.type;
     const source_userId = source.userId;
-    console.log(postback_data, postback_params);
     switch (postback_data) {
       case "update_pointcard":
-        replyEventObj = await get_pointcard_info_obj(source_userId);
+        const service_id = await get_service_id(source_userId);
+        if (service_id === "") {
+          replyEventObj.type = "text";
+          replyEventObj.text = `You are not logined.\nPlease continue to complete the linkage between your service account and your LINE account at the URL below.\n\n${LIFF_AUTH_URL}`;
+        } else {
+          replyEventObj = await get_pointcard_info_obj(
+            source_userId,
+            service_id
+          );
+        }
         break;
       default:
         replyEventObj = {
@@ -87,12 +97,15 @@ async function linebot(event) {
         replyEventObj.text = `Received audio file: ${s3ObjectUrl}`;
         break;
       case "text":
-        const is_logined = await check_login(source_userId);
-        if (!is_logined) {
+        const service_id = await get_service_id(source_userId);
+        if (service_id === "") {
           replyEventObj.text = `You are not logined.\nPlease continue to complete the linkage between your service account and your LINE account at the URL below.\n\n${LIFF_AUTH_URL}`;
         } else {
           if (message_text === "pointcard") {
-            replyEventObj = await get_pointcard_info_obj(source_userId);
+            replyEventObj = await get_pointcard_info_obj(
+              source_userId,
+              service_id
+            );
           } else {
             replyEventObj.text = `\"${message_text}\" is not supported.`;
           }
@@ -129,7 +142,8 @@ async function getS3ObjectUrl_fromLine(message_id, message_type) {
       Key: `${message_id}.${extension}`,
       Body: buffer,
     };
-    return await put_s3_obj(params);
+    const generated_url = await put_s3_obj(params);
+    return generated_url.split("?")[0];
   } catch (err) {
     console.log(err);
     return "";
@@ -154,7 +168,7 @@ async function make_pointcard_replyEventObj(pointcard_info) {
 
   template.body.contents[0].text = pointcard_info.store_name;
   template.body.contents[1].contents[1].text = pointcard_info.point;
-  const bounus_text = {
+  const bonus_text = {
     type: "text",
     text: "Bonus: ",
   };
@@ -170,22 +184,22 @@ async function make_pointcard_replyEventObj(pointcard_info) {
   };
   const scale_text = {
     type: "text",
-    text: `${pointcard_info.bounus}/${pointcard_info.bounus_max}`,
+    text: `${pointcard_info.bonus}/${pointcard_info.bonus_max}`,
     size: "sm",
     color: "#999999",
     margin: "md",
     flex: 0,
   };
-  const bounus_contents = [bounus_text];
-  for (let i = 0; i < pointcard_info.bounus_max; i++) {
-    if (i < pointcard_info.bounus) {
-      bounus_contents.push(gold_star_icon);
+  const bonus_contents = [bonus_text];
+  for (let i = 0; i < pointcard_info.bonus_max; i++) {
+    if (i < pointcard_info.bonus) {
+      bonus_contents.push(gold_star_icon);
     } else {
-      bounus_contents.push(gray_star_icon);
+      bonus_contents.push(gray_star_icon);
     }
   }
-  bounus_contents.push(scale_text);
-  template.body.contents[2].contents = bounus_contents;
+  bonus_contents.push(scale_text);
+  template.body.contents[2].contents = bonus_contents;
   template.body.contents[3].contents[1].text = pointcard_info.user_id;
   let history_contents = [
     template.body.contents[4].contents[0],
@@ -249,39 +263,74 @@ async function getStreamBuffer(stream) {
   });
 }
 
-async function get_pointcard_info_obj(line_user_id) {
-  let pointcard_info = {
-    image: {
-      url: "https://contents.blog.jicoman.info/image/aws.png",
-      aspectRatio: "1:1",
-      size: "4xl",
-    },
-    store_name: "Yagami bakery",
-    point: "0",
-    bounus: 0,
-    bounus_max: 5,
-    user_id: "123456789",
-    history: [
-      { date: "2020/10/01", point: "1000" },
-      { date: "2020/10/02", point: "-100" },
-      { date: "2020/10/03", point: "200" },
-    ],
-  };
-  //{} => not resistered
-  //{"pointcard_info":{}} => resistered
-  //fetch to lambda and get pointcard_info
-  const qrcode_url = "https://sample.com";
-  const qrcode_img_url = await make_qrcode_s3url(line_user_id, qrcode_url);
-  pointcard_info.image.url = qrcode_img_url;
-  pointcard_info.user_id = line_user_id;
-  const replyEventObj = await make_pointcard_replyEventObj(pointcard_info);
-  return replyEventObj;
+async function get_pointcard_info_obj(line_id, service_id) {
+  try {
+    let pointcard_info = {
+      image: {
+        url: "https://contents.blog.jicoman.info/image/aws.png",
+        aspectRatio: "1:1",
+        size: "4xl",
+      },
+      store_name: "Yagami bakery",
+      point: "0",
+      bonus: 0,
+      bonus_max: 5,
+      user_id: "123456789",
+      history: [
+        // { date: "2020/10/01", point: "1000" },
+        // { date: "2020/10/02", point: "-100" },
+        // { date: "2020/10/03", point: "200" },
+      ],
+    };
+    //{} => not resistered
+    //{"pointcard_info":{}} => resistered
+    //fetch to lambda and get pointcard_info
+
+    // const qrcode_url = `${POINTCARD_INFO_ENDPOINT}?service_id=${service_id}`;
+    const qrcode_url = service_id;
+    const qrcode_img_url = await make_qrcode_s3url(line_id, qrcode_url);
+    pointcard_info.image.url = qrcode_img_url.split("?")[0];
+    const response = await fetch(POINTCARD_INFO_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        method: "get",
+        user_id: service_id,
+      }),
+    });
+    const pointcard_info_raw_data = await response.json();
+    console.log("pointcard_info_raw_data: ", pointcard_info_raw_data);
+    pointcard_info.point = pointcard_info_raw_data.point;
+    pointcard_info.bonus =
+      Number(pointcard_info_raw_data.bonus) % pointcard_info.bonus_max;
+    pointcard_info.user_id = pointcard_info_raw_data.user_id;
+    pointcard_info.history = [];
+    for (let i = 0; i < pointcard_info_raw_data.history.length; i++) {
+      const history = pointcard_info_raw_data.history[i];
+      const history_obj = {
+        date: history.timestamp,
+        point: history.point,
+      };
+      pointcard_info.history.push(history_obj);
+    }
+    console.log("pointcard_info: ", pointcard_info);
+    const replyEventObj = await make_pointcard_replyEventObj(pointcard_info);
+    return replyEventObj;
+  } catch (e) {
+    console.log(e);
+    return {
+      type: "text",
+      text: "generate pointcard error",
+    };
+  }
 }
 
-async function check_login(line_user_id) {
+async function get_service_id(line_user_id) {
   //check login
-  //if login => return true
-  //else => return false
+  //if login => return service_id
+  //else => return ""
   const data = {
     tablename: "lineId_to_serviceInfo",
     method: "query",
@@ -305,12 +354,12 @@ async function check_login(line_user_id) {
     const result = await response.json();
     const result_body = JSON.parse(result.body);
     if (result_body.length == 0) {
-      return false;
+      return "";
     } else {
-      return true;
+      return result_body[0].service_id;
     }
   } catch (error) {
     console.error("Error:", error);
-    return false;
+    return "";
   }
 }

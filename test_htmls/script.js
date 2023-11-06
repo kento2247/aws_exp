@@ -15,6 +15,7 @@ document
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          method: "get",
           user_id: userId,
         }),
       });

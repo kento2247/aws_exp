@@ -45,3 +45,10 @@ document
   .addEventListener("submit", function (event) {
     // ...（以前のコードと同じ）
   });
+
+let put_json = {
+  service_id: service_id,
+  user_name: user_name,
+  image_url: image_url,
+  timestamp: timestamp,
+};
