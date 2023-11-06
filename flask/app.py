@@ -8,6 +8,10 @@ app.config['SECRET_KEY'] = '1234'
 def index():
     return render_template('index.html')
 
+@app.route('/baketop')
+def baketop():
+    return render_template('bake_top.html')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     return render_template('login.html')
@@ -21,5 +25,5 @@ def bake_qr():
     return render_template('bake_qr.html')
 
 if __name__ == '__main__':
-  app.run(host = '0.0.0.0', port = 5000)
-  app.debug = True
+    app.run(host = '0.0.0.0', port = 5000)
+    app.debug = True

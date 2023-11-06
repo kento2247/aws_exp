@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/hamburger.css">
+    <link rel="stylesheet" href="../static/css/bake_top.css">
+    <script src="../static/js/jquery-3.6.1.min.js" defer></script>
+    <script src="../static/js/cart.js" defer></script>
+    <title>yagami_top</title>
+</head>
+<body class="">
+    <header class="fixed w-full bg-white h-20 top-0">
+        <div class="flex ">
+            <figure class="w-1/4 mt-2">
+                <img src="{{url_for('static', filename='img/keio.png')}}" alt="" class="">
+            </figure>
+            <div>
+                <h1 class="font-bold text-lg ml-10 mt-4">矢上ベーカリー</h1>
+                <span class=" block ml-8 text-center">
+                    <a href="#">MY PAGE</a>
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- section - menu -->
+        <section>
+            <h2 class="mb-2 text-2xl tracking-tight font-extrabold text-gray-900 dark:text-white text-center">MENU</h2>
+            <div class="grid pt-4 text-left border-t border-gray-200 md:gap-16 dark:border-gray-700 md:grid-cols-2"><div></div>
+            <div>
+                <div class="grid grid-cols-2 gap-2 mx-8">
+                        <div class="max-w-sm lg:max-w-full lg:flex">
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('{{url_for('static', filename='img/bread/kabocha.png')}}"); object-fit: cover; title="Woman holding a mug"></div>
+                            <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                                <div class="mb-8">
+                                    <p class="text-sm text-gray-600 flex items-center">1 かぼちゃパン</p>
+                                    <div class="text-gray-900 font-bold text-xl mb-2">210円</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="max-w-sm lg:max-w-full lg:flex">
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('{{url_for('static', filename='img/bread/tuna.png')}}"); object-fit: cover; title="Woman holding a mug"></div>
+                            <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                                <div class="mb-8">
+                                    <p class="text-sm text-gray-600 flex items-center">2 ツナコーン</p>
+                                    <div class="text-gray-900 font-bold text-xl mb-2">210円</div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 mx-8 mt-4">
+                        <div class="max-w-sm lg:max-w-full lg:flex">
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('{{url_for('static', filename='img/bread/grape.png')}}"); object-fit: cover; title="Woman holding a mug"></div>
+                            <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                                <div class="mb-8">
+                                    <p class="text-sm text-gray-600 flex items-center">3 巨峰のパイ</p>
+                                    <div class="text-gray-900 font-bold text-xl mb-2">160円</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="max-w-sm lg:max-w-full lg:flex">
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('{{url_for('static', filename='img/bread/anpan.png')}}"); object-fit: cover; title="Woman holding a mug"></div>
+                            <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                                <div class="mb-8">
+                                    <p class="text-sm text-gray-600 flex items-center">4 慶應あんぱん</p>
+                                    <div class="text-gray-900 font-bold text-xl mb-2">190円</div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 mx-8 mt-4">
+                        <div class="max-w-sm lg:max-w-full lg:flex">
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('{{url_for('static', filename='img/bread/salt.png')}}"); object-fit: cover; title="Woman holding a mug"></div>
+                            <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                                <div class="mb-8">
+                                    <p class="text-sm text-gray-600 flex items-center">5塩バターパン</p>
+                                    <div class="text-gray-900 font-bold text-xl mb-2">130円</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="max-w-sm lg:max-w-full lg:flex">
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('{{url_for('static', filename='img/bread/hunny.png')}}"); object-fit: cover; title="Woman holding a mug"></div>
+                            <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                                <div class="mb-8">
+                                    <p class="text-sm text-gray-600 flex items-center">6 はちみつバターパン</p>
+                                    <div class="text-gray-900 font-bold text-xl mb-2">130円</div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="grid grid-cols-2 gap-2 mx-8 mt-4">
+                        <div class="max-w-sm lg:max-w-full lg:flex">
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('{{url_for('static', filename='img/bread/cheeze.png')}}"); object-fit: cover; title="Woman holding a mug"></div>
+                            <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                                <div class="mb-8">
+                                    <p class="text-sm text-gray-600 flex items-center">7 ハムチーズパン</p>
+                                    <div class="text-gray-900 font-bold text-xl mb-2">160円</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="max-w-sm lg:max-w-full lg:flex">
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('{{url_for('static', filename='img/bread/bagle.png')}}"); object-fit: cover; title="Woman holding a mug"></div>
+                            <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                                <div class="mb-8">
+                                    <p class="text-sm text-gray-600 flex items-center">8 黒糖ベーグル</p>
+                                    <div class="text-gray-900 font-bold text-xl mb-2">140円</div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 mx-8 mt-4">
+                        <div class="max-w-sm lg:max-w-full lg:flex">
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('{{url_for('static', filename='img/bread/france.png')}}"); object-fit: cover; title="Woman holding a mug"></div>
+                            <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                                <div class="mb-8">
+                                    <p class="text-sm text-gray-600 flex items-center">9 チーズのフランスパン</p>
+                                    <div class="text-gray-900 font-bold text-xl mb-2">180円</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="max-w-sm lg:max-w-full lg:flex">
+                            <div class="h-32 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('{{url_for('static', filename='img/bread/hamegg.png')}}"); object-fit: cover;" title="Woman holding a mug"></div>
+                            <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                                <div class="mb-8">
+                                    <p class="text-sm text-gray-600 flex items-center">10 ハムタマゴパン</p>
+                                    <div class="text-gray-900 font-bold text-xl mb-2">200円</div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <!-- パンの画像を10個分複製 -->
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

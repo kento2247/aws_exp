@@ -1,0 +1,125 @@
+body{
+  background-color: #FFF8DC;
+}
+
+#wrapper {
+  color: #D2691E;
+}
+
+#wrapper .back_btn {
+  display: block;
+  margin: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#wrapper .back_btn:link, #wrapper .back_btn:hover, #wrapper .back_btn:visited, #wrapper .back_btn:active {
+  color: #D2691E;
+  text-decoration: none;
+}
+
+#wrapper .conteiner {
+  width: 80%;
+  max-width: 960px;
+  margin: 3rem auto;
+  font-weight: bold;
+  padding: 1rem 0;
+  border: 5px solid #F0E68C;
+  border-radius: 10px;
+  background-color: #FFF;
+}
+
+#wrapper .conteiner h1 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+@media screen and (max-width: 480px) {
+  #wrapper .conteiner h1 {
+    font-size: 1.5rem;
+  }
+}
+
+#wrapper .conteiner .shopping_list {
+  margin: 1rem 0;
+  list-style: none;
+}
+
+#wrapper .conteiner .shopping_list li {
+  width: 96%;
+  margin: auto;
+  padding: 1rem 0;
+  border-top: 3px solid #F0E68C;
+}
+
+#wrapper .conteiner .shopping_list li:last-of-type {
+  border-bottom: 3px solid #F0E68C;
+}
+
+#wrapper .conteiner .shopping_list li h2 {
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width: 480px) {
+  #wrapper .conteiner .shopping_list li h2 {
+    font-size: 1.2rem;
+  }
+}
+
+#wrapper .conteiner .shopping_list li .price {
+  font-size: 1.5rem;
+  text-align: right;
+}
+
+@media screen and (max-width: 480px) {
+  #wrapper .conteiner .shopping_list li .price {
+    font-size: 1.2rem;
+  }
+}
+
+#wrapper .conteiner .shopping_list li .price::before {
+  content: '\00a5';
+  font-size: 1.7rem;
+}
+
+@media screen and (max-width: 480px) {
+  #wrapper .conteiner .shopping_list li .price::before {
+    font-size: 1.5rem;
+  }
+}
+
+#wrapper .conteiner .total {
+  width: 96%;
+  margin: auto;
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width: 480px) {
+  #wrapper .conteiner .total {
+    font-size: 1.2rem;
+  }
+}
+
+#wrapper .conteiner .total .yen_symbol {
+  font-size: 1.7rem;
+}
+
+@media screen and (max-width: 480px) {
+  #wrapper .conteiner .total .yen_symbol {
+    font-size: 1.5rem;
+  }
+}
+
+#wrapper .conteiner .confirm_btn {
+  display: block;
+  margin: auto;
+  padding: 4px 1.2rem;
+  font-size: 1.2rem;
+  color: #D2691E;
+  font-weight: bold;
+  background-color: #F0E68C;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+}
