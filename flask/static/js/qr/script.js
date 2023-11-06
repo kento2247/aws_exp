@@ -2,6 +2,7 @@
 const video = document.getElementById("video");
 let contentWidth;
 let contentHeight;
+let flag = 1;
 
 const media = navigator.mediaDevices
   .getUserMedia({ audio: false, video: { width: 640, height: 480 } })
@@ -29,6 +30,8 @@ const canvasUpdate = () => {
   requestAnimationFrame(canvasUpdate);
 };
 
+// isoフォーマットで現在時刻を取得
+let today = new Date().toISOString();
 
 const putMethod = (code) =>{
   const url = 'https://ux3v87sf1e.execute-api.us-east-1.amazonaws.com/get_point_info';
@@ -38,11 +41,12 @@ const putMethod = (code) =>{
     method: 'put',
     item:{
       user_id: `${code_data}`,
-      timestamp: "2023-11-06T03:13:09.406Z",
+      timestamp: `${today}`,
       active_flag: true,
       bonus: "4",
       location: "35.555428820777166,139.65397644394386",
       point: "-10",
+      description: "bonus point",
     }
   };
 
@@ -83,13 +87,16 @@ const checkImage = () => {
 
   // 検出結果に合わせて処理を実施
   if (code) {
-    console.log("QRcode is found", code);
+    // console.log("QRcode is found", code);
     drawRect(code.location);
     document.getElementById("qr-msg").textContent = `QR code: ${code.data}`;
     putMethod(code)
+    // if(flag==1){
+    //   flag=0;
+    // }
     window.open(code.data);
   } else {
-    console.log("QRcode is not found", code);
+    // console.log("QRcode is not found", code);
     rectCtx.clearRect(0, 0, contentWidth, contentHeight);
     document.getElementById("qr-msg").textContent = "QR code is not found.";
   }
