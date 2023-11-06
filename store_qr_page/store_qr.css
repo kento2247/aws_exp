@@ -1,0 +1,13 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.section {
+  margin-top: 50px;
+}
+
+#qrScanner {
+  max-width: 300px;
+  margin: 20px auto;
+}

@@ -1,14 +1,16 @@
-// login.js
 const service_login_api =
   "https://5sbpzbfrgl.execute-api.us-east-1.amazonaws.com/api";
-let redirect_url = new URLSearchParams(window.location.search).get(
-  "redirect_url"
-);
+let redirect_url =
+  new URLSearchParams(window.location.search).get("redirect_url") ||
+  "https://liff.line.me/2001459172-KopGbo3y";
 
 document
   .getElementById("loginForm")
   .addEventListener("submit", function (event) {
     event.preventDefault();
+
+    // ボタンを無効化
+    document.getElementById("loginButton").disabled = true;
 
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
@@ -37,7 +39,11 @@ document
             "Login failed. Please try again.";
         }
       })
-      .catch((error) => console.error("Error:", error));
+      .catch((error) => console.error("Error:", error))
+      .finally(() => {
+        // ボタンを有効化
+        document.getElementById("loginButton").disabled = false;
+      });
   });
 
 document.getElementById("toggleSignup").addEventListener("click", function () {
