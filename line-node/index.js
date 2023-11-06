@@ -118,7 +118,6 @@ async function linebot(event) {
     await client.replyMessage(replyToken, replyEventObj);
   }
 }
-
 async function getS3ObjectUrl_fromLine(message_id, message_type) {
   let extension = "";
   switch (message_type) {
