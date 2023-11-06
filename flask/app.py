@@ -8,9 +8,9 @@ app.config['SECRET_KEY'] = '1234'
 def index():
     return render_template('index.html')
 
-@app.route('/baketop')
-def baketop():
-    return render_template('bake_top.html')
+@app.route('/bake')
+def bake():
+    return render_template('bake.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
